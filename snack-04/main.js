@@ -14,20 +14,35 @@ console.log(people)
 
 const infoPeople = []
 
-for (let i = 0; i < people.length; i++) {
-    let person = people[i];
-    infoPeople.push(person);
-}
 
-for (let i = 0; i < infoPeople.length; i++) {
-    let currentPerson = infoPeople[i];
-
-    if (currentPerson.eta < 18 || currentPerson.eta > 90) {
-        currentPerson.info = `${currentPerson.nome} ${currentPerson.cognome} NON può guidare`
-    } else {
-        currentPerson.info = `${currentPerson.nome} ${currentPerson.cognome} può guidare`
+people.map(function (person) {
+    let personCanDrive = {
+        ...person,
+        info: 'non può guidare'
     }
-}
+
+    if (person.eta >= 18) {
+        personCanDrive.info = 'può guidare'
+        infoPeople.push(personCanDrive);
+    } else {
+        infoPeople.push(personCanDrive);
+    }
+})
+
+// for (let i = 0; i < people.length; i++) {
+//     let person = people[i];
+//     infoPeople.push(person);
+// }
+
+// for (let i = 0; i < infoPeople.length; i++) {
+//     let currentPerson = infoPeople[i];
+
+//     if (currentPerson.eta < 18 || currentPerson.eta > 90) {
+//         currentPerson.info = `${currentPerson.nome} ${currentPerson.cognome} NON può guidare`
+//     } else {
+//         currentPerson.info = `${currentPerson.nome} ${currentPerson.cognome} può guidare`
+//     }
+// }
 
 console.log(infoPeople);
 
